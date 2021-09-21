@@ -30,7 +30,6 @@ class inputContainerView: UIView {
         }
         
         addSubview(textField)
-//        textField.backgroundColor = .red
         textField.snp.makeConstraints { make in
             make.centerY.equalTo(self)
             make.left.equalTo(imageView.snp.right).offset(10)
