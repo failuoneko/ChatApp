@@ -14,6 +14,9 @@
 		640D5EEC26CE20CC0026E604 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640D5EEB26CE20CC0026E604 /* LoginViewModel.swift */; };
 		640D5EEF26CE437D0026E604 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 640D5EEE26CE437D0026E604 /* RegisterViewModel.swift */; };
 		643D067326D0E4DF00D872DE /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 643D067226D0E4DF00D872DE /* JGProgressHUD */; };
+		646DA25926FB101E00E40847 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646DA25826FB101E00E40847 /* MessageCell.swift */; };
+		646DA25B26FB30D500E40847 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646DA25A26FB30D500E40847 /* Message.swift */; };
+		646DA25D26FB41A800E40847 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646DA25C26FB41A800E40847 /* MessageViewModel.swift */; };
 		646E620B26D365F70049B352 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E620A26D365F70049B352 /* NewMessageController.swift */; };
 		646E620D26D36BFE0049B352 /* ConfigureNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E620C26D36BFE0049B352 /* ConfigureNavigationBar.swift */; };
 		646E621026D371F90049B352 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646E620F26D371F90049B352 /* UserCell.swift */; };
@@ -49,6 +52,9 @@
 		640D5EE926CE06AA0026E604 /* ConfigureGardientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureGardientLayer.swift; sourceTree = "<group>"; };
 		640D5EEB26CE20CC0026E604 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		640D5EEE26CE437D0026E604 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		646DA25826FB101E00E40847 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		646DA25A26FB30D500E40847 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		646DA25C26FB41A800E40847 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		646E620A26D365F70049B352 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		646E620C26D36BFE0049B352 /* ConfigureNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureNavigationBar.swift; sourceTree = "<group>"; };
 		646E620F26D371F90049B352 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -108,12 +114,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		646E620E26D371E90049B352 /* Cell */ = {
+		646E620E26D371E90049B352 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				646E620F26D371F90049B352 /* UserCell.swift */,
+				646DA25826FB101E00E40847 /* MessageCell.swift */,
 			);
-			path = Cell;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		64AA2B2E26CCDBF200C3605A = {
@@ -179,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				640D5EED26CE434B0026E604 /* Auth */,
+				646DA25C26FB41A800E40847 /* MessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -186,7 +194,7 @@
 		64AA2B5226CCDC6400C3605A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				646E620E26D371E90049B352 /* Cell */,
+				646E620E26D371E90049B352 /* Cells */,
 				64AA2B6426CD62FC00C3605A /* inputContainerView.swift */,
 				64AA2B6626CD73EA00C3605A /* CustomTextField.swift */,
 				649CD89B26F6353400F7FAB3 /* CustomInputAccessoryView.swift */,
@@ -198,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				646E621126D381450049B352 /* User.swift */,
+				646DA25A26FB30D500E40847 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -374,11 +383,13 @@
 				649CD89C26F6353400F7FAB3 /* CustomInputAccessoryView.swift in Sources */,
 				64AA2B5C26CCFB0900C3605A /* LoginController.swift in Sources */,
 				6405A6C626D29C9300A76185 /* showLoader.swift in Sources */,
+				646DA25926FB101E00E40847 /* MessageCell.swift in Sources */,
 				64AA2B6526CD62FC00C3605A /* inputContainerView.swift in Sources */,
 				640D5EEA26CE06AA0026E604 /* ConfigureGardientLayer.swift in Sources */,
 				646E621026D371F90049B352 /* UserCell.swift in Sources */,
 				646E621426D382390049B352 /* Service.swift in Sources */,
 				646E621226D381450049B352 /* User.swift in Sources */,
+				646DA25D26FB41A800E40847 /* MessageViewModel.swift in Sources */,
 				64AA2B6726CD73EA00C3605A /* CustomTextField.swift in Sources */,
 				64AA2B3B26CCDBF200C3605A /* AppDelegate.swift in Sources */,
 				640D5EEC26CE20CC0026E604 /* LoginViewModel.swift in Sources */,
@@ -388,6 +399,7 @@
 				646E620D26D36BFE0049B352 /* ConfigureNavigationBar.swift in Sources */,
 				646E620B26D365F70049B352 /* NewMessageController.swift in Sources */,
 				64AA2B3D26CCDBF200C3605A /* SceneDelegate.swift in Sources */,
+				646DA25B26FB30D500E40847 /* Message.swift in Sources */,
 				64AA2B5626CCDDB100C3605A /* ConversationsController .swift in Sources */,
 				64AA2B5926CCF86600C3605A /* ReuseCell.swift in Sources */,
 			);
