@@ -8,7 +8,6 @@
 import UIKit
 
 extension UITableViewCell {
-    
     static var id: String {
         return "\(Self.self)"
     }
@@ -16,6 +15,12 @@ extension UITableViewCell {
 }
 
 extension UICollectionViewCell {
+    static var id: String {
+        return "\(Self.self)"
+    }
+}
+
+extension UITableViewController {
     static var id: String {
         return "\(Self.self)"
     }

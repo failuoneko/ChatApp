@@ -42,7 +42,7 @@ class NewMessageController: UITableViewController {
     
     //訪問用戶資料
     func fetchUsers() {
-        Service.fetchUser { users in
+        Service.fetchUsers { users in
             self.users = users
             self.tableView.reloadData()
             print("DEBUG: Users is new message controller \(users)")

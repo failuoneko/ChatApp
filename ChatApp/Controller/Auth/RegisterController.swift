@@ -186,7 +186,7 @@ class RegisterController: UIViewController {
     
     func configureUI() {
         
-        configureGardientLayer()
+        configureGradientLayer()
         
         view.addSubview(plusPhotoButton)
         plusPhotoButton.snp.makeConstraints { make in

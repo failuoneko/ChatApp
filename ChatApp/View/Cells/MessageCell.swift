@@ -12,7 +12,7 @@ class MessageCell: UICollectionViewCell {
     // MARK: - Properties
     
     var message: Message? {
-        didSet { configureChatBox() }
+        didSet { configureChatbox() }
     }
     
     var leftMessageBubble: NSLayoutConstraint!
@@ -58,7 +58,7 @@ class MessageCell: UICollectionViewCell {
         addSubview(messageBubble)
         messageBubble.snp.makeConstraints { make in
             make.top.equalTo(self.snp.top)
-//            make.left.equalTo(profileImageView.snp.right).offset(12)
+            make.bottom.equalTo(self.snp.bottom)
             make.width.lessThanOrEqualTo(250)
             messageBubble.layer.cornerRadius = 12
         }
@@ -83,7 +83,7 @@ class MessageCell: UICollectionViewCell {
 
     // MARK: - Helpers
 
-    func configureChatBox() {
+    func configureChatbox() {
         guard let message = message else { return }
         let viewModel = MessageViewModel(message: message)
 
@@ -95,6 +95,7 @@ class MessageCell: UICollectionViewCell {
         rightMessageBubble.isActive = viewModel.rightMessageActive
         
         profileImageView.isHidden = viewModel.hideProfileImage
+        profileImageView.kf.setImage(with: viewModel.profileImageUrl)
     }
 
 }

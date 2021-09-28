@@ -27,6 +27,7 @@ class ChatController: UICollectionViewController {
         super.viewDidLoad()
         
         configureUI()
+        fetchMessages()
         
     }
     
@@ -47,7 +48,18 @@ class ChatController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Selectors
+    // MARK: - API
+    
+    func fetchMessages() {
+        Service.fetchMessages(forUser: user) { messages in
+            self.messages = messages
+            self.collectionView.reloadData()
+            
+            // 傳訊息後滾動到最下方
+            self.collectionView.scrollToItem(at: [0, messages.count - 1], at: .bottom, animated: true)
+            
+        }
+    }
     
     
     // MARK: - Helpers
@@ -58,6 +70,7 @@ class ChatController: UICollectionViewController {
         
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: MessageCell.id)
         collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
 }
 
@@ -69,6 +82,7 @@ extension ChatController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MessageCell.id, for: indexPath) as! MessageCell
         cell.message = messages[indexPath.row]
+        cell.message?.user = user
         return cell
     }
 }
@@ -80,17 +94,31 @@ extension ChatController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let cellSize = MessageCell(frame: frame)
+        cellSize.message = messages[indexPath.row]
+        cellSize.layoutIfNeeded() //高度大於50時佈局
+        
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let size = cellSize.systemLayoutSizeFitting(targetSize)
+        
+        return .init(width: view.frame.width, height: size.height)
     }
     
 }
 
 extension ChatController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, send message: String) {
-        inputView.messageInputTextView.text = nil
-        isCurrentUser.toggle()
-        let message = Message(text: message, isCurrentUser: isCurrentUser)
-        messages.append(message)
-        collectionView.reloadData()
+        
+        Service.uploadMessage(message, to: user) { error in
+            if let error = error {
+                print("DEBUG: Failed to upload message \(error.localizedDescription)")
+                return
+            }
+        }
+        
+        inputView.clearMessageText()
+        
     }
 }

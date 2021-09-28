@@ -134,7 +134,7 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
-        configureGardientLayer()
+        configureGradientLayer()
         
         view.addSubview(iconImage)
         iconImage.snp.makeConstraints { make in
