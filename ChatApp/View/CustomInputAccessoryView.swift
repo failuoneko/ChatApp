@@ -57,23 +57,22 @@ class CustomInputAccessoryView: UIView {
         
         addSubview(sendButton)
         sendButton.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top).offset(4)
-            make.right.equalTo(self.snp.right).offset(-10)
-            make.height.equalTo(50)
-            make.width.equalTo(50)
+            make.top.equalToSuperview().offset(4)
+            make.right.equalToSuperview().offset(-10)
+            make.size.equalTo(50)
         }
         
         addSubview(messageInputTextView)
         messageInputTextView.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top).offset(10)
-            make.left.equalTo(self.snp.left).offset(5)
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(5)
             make.right.equalTo(sendButton.snp.left).offset(-5)
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-10)
+            make.bottom.equalTo(safeAreaLayoutGuide).offset(-10)
         }
         
         addSubview(placeholderLabel)
         placeholderLabel.snp.makeConstraints { make in
-            make.left.equalTo(messageInputTextView.snp.left).offset(5)
+            make.left.equalTo(messageInputTextView).offset(5)
             make.centerY.equalTo(messageInputTextView)
         }
         
@@ -107,7 +106,6 @@ class CustomInputAccessoryView: UIView {
         placeholderLabel.isHidden = false
     }
 
-    
 }
 
 

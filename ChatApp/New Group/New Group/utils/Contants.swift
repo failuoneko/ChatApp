@@ -7,5 +7,5 @@
 
 import Firebase
 
-let COLLECTION_MESSAGES = Firestore.firestore().collection("message")
-let COLLECTION_USERS = Firestore.firestore().collection("users")
+let FIRESTORE_COLLECTION_MESSAGES = Firestore.firestore().collection("message")
+let FIRESTORE_COLLECTION_USERS = Firestore.firestore().collection("users")

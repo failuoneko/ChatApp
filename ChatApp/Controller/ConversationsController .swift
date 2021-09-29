@@ -30,6 +30,7 @@ class ConversationsController: UIViewController {
     
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -43,6 +44,7 @@ class ConversationsController: UIViewController {
     }
     
     // MARK: - Selectors
+    
     @objc func showProfile() {
         let controller = ProfileController(style: .insetGrouped)
         controller.delegate = self
@@ -66,7 +68,6 @@ class ConversationsController: UIViewController {
     func fetchConversations() {
         showLoader(true)
         Service.fetchConversations { conversations in
-//            self.conversations = conversations
             conversations.forEach { conversation in
                 let message = conversation.message
                 self.conversationsDictionary[message.chatPartnerId] = conversation
@@ -81,11 +82,7 @@ class ConversationsController: UIViewController {
     func authUser() {
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
-//            print("DEBUG: User is not logged in. Prensent login screen here..")
         }
-//        else {
-//            print("DEBUG: User id is \(String(describing: Auth.auth().currentUser?.uid))")
-//        }
     }
     
     func signOut() {
@@ -129,7 +126,7 @@ class ConversationsController: UIViewController {
     }
     
     func configureTableView() {
-        tableView.backgroundColor = .systemPink
+        tableView.backgroundColor = .white
         tableView.rowHeight = 80
         tableView.register(ConversationCell.self, forCellReuseIdentifier: ConversationCell.id)
         tableView.tableFooterView = UIView()
@@ -155,8 +152,6 @@ extension ConversationsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.id, for: indexPath) as! ConversationCell
-//        cell.textLabel?.text = "Test"
-//        cell.textLabel?.text = conversations[indexPath.row].message.text
         cell.conversation = conversations[indexPath.row]
         return cell
     }
@@ -179,8 +174,6 @@ extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, startChatWith user: User) {
         dismiss(animated: true, completion: nil)
         showChatControlloer(forUser: user)
-//        print("DEBUG: User in convesation controller is \(user.username)")
-
     }
 }
 

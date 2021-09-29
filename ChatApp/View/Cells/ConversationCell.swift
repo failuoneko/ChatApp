@@ -27,7 +27,7 @@ class ConversationCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .darkGray
-        label.text = "2h"
+        label.text = "1h"
         return label
     }()
     
@@ -50,7 +50,6 @@ class ConversationCell: UITableViewCell {
         
         addSubview(profileImageView)
         profileImageView.snp.makeConstraints { make in
-//            make.left.equalTo(self.snp.left).offset(12)
             make.left.equalToSuperview().offset(12)
             make.size.equalTo(50)
             make.centerY.equalToSuperview()

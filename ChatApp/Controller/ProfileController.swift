@@ -41,7 +41,6 @@ class ProfileController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-//        navigationController?.navigationBar.barStyle = .black
     }
 
     // MARK: - API
@@ -66,7 +65,6 @@ class ProfileController: UITableViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.rowHeight = 70
         tableView.backgroundColor = .systemGroupedBackground
-//        tableView.tableFooterView = UIView()
 
         footerView.delegate = self
         footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)

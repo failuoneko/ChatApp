@@ -31,7 +31,7 @@ class UserCell: UITableViewCell {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "BIG CAT"
+        label.text = "fullname"
         return label
     }()
     
@@ -39,7 +39,7 @@ class UserCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "small cat"
+        label.text = "username"
         return label
     }()
         

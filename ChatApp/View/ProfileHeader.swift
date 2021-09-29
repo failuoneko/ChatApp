@@ -40,7 +40,6 @@ class ProfileHeader: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 4.0
-//        imageView.backgroundColor = .white
         return imageView
     }()
     
@@ -89,8 +88,6 @@ class ProfileHeader: UIView {
         delegate?.dismissController()
     }
     
-    
-    
     // MARK: - Helpers
     
     func configureUserData() {
@@ -136,7 +133,6 @@ class ProfileHeader: UIView {
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemRed.cgColor]
         gradient.locations = [0, 1]
         layer.addSublayer(gradient)
-        //        gardient.frame = bounds
     }
     
 }

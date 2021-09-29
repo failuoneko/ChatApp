@@ -27,6 +27,7 @@ class NewMessageController: UITableViewController {
 
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,9 +97,6 @@ extension NewMessageController {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.id, for: indexPath) as! UserCell
         cell.user = isSeachMode ? filterUsers[indexPath.row] : users[indexPath.row]
         
-//        print("DEBUG: Index row is \(indexPath.row)")
-//        print("DEBUG: User in array is \(users[indexPath.row].username)")
-        
         return cell
     }
 }
@@ -118,8 +116,7 @@ extension NewMessageController {
 // 更新搜尋結果
 extension NewMessageController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        
+        guard let searchText = searchController.searchBar.text else { return }
         filterUsers = users.filter({ user in
             return user.fullname.contains(searchText) || user.username.contains(searchText)
         })

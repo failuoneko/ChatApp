@@ -57,6 +57,4 @@ class ProfileFooter: UIView {
         delegate?.handleSignout()
     }
     
-    // MARK: - Helpers
-    
 }

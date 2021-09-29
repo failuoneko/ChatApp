@@ -21,5 +21,4 @@ extension UIColor {
     ///falseMessageTextColor
     static let falseMessageTextColor = systemPurple
     
-
 }

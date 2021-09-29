@@ -23,6 +23,7 @@ class ChatController: UICollectionViewController {
     
     
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,8 +118,6 @@ extension ChatController: CustomInputAccessoryViewDelegate {
                 return
             }
         }
-        
         inputView.clearMessageText()
-        
     }
 }

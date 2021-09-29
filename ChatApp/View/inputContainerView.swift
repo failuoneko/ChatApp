@@ -23,17 +23,17 @@ class inputContainerView: UIView {
         
         addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.centerY.equalTo(self)
-            make.left.equalTo(self).offset(10)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(10)
             make.height.equalTo(25)
             make.width.equalTo(30)
         }
         
         addSubview(textField)
         textField.snp.makeConstraints { make in
-            make.centerY.equalTo(self)
+            make.centerY.equalToSuperview()
             make.left.equalTo(imageView.snp.right).offset(10)
-            make.right.equalTo(self.snp.right).offset(-10)
+            make.right.equalToSuperview().offset(-10)
             make.top.bottom.equalTo(0)
         }
         
@@ -41,9 +41,9 @@ class inputContainerView: UIView {
         underline.backgroundColor = .white
         addSubview(underline)
         underline.snp.makeConstraints { make in
-            make.left.equalTo(self.snp.left)
-            make.right.equalTo(self.snp.right)
-            make.bottom.equalTo(self.snp.bottom)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.height.equalTo(0.8)
         }
         

@@ -25,8 +25,6 @@ extension UIViewController {
         navigationItem.title = title
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isTranslucent = true //是否為半透明
-        
         navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
     }
-    
 }
