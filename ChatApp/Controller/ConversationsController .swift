@@ -9,13 +9,12 @@ import UIKit
 import SnapKit
 import Firebase
 
-private let reuseIdentifier = "UserCell"
-
 class ConversationsController: UIViewController {
     
     // MARK: - Properties
     private let tableView = UITableView()
     private var conversations: [Conversation] = []
+    private var conversationsDictionary: [String: Conversation] = [:]
     
     private let newMessageButton: UIButton = {
         let button = UIButton(type: .system)
@@ -45,8 +44,8 @@ class ConversationsController: UIViewController {
     
     // MARK: - Selectors
     @objc func showProfile() {
-//        signOut()
-        let controller = ProfileController()
+        let controller = ProfileController(style: .insetGrouped)
+        controller.delegate = self
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -65,8 +64,15 @@ class ConversationsController: UIViewController {
     // MARK: - API
     
     func fetchConversations() {
+        showLoader(true)
         Service.fetchConversations { conversations in
-            self.conversations = conversations
+//            self.conversations = conversations
+            conversations.forEach { conversation in
+                let message = conversation.message
+                self.conversationsDictionary[message.chatPartnerId] = conversation
+            }
+            self.showLoader(false)
+            self.conversations = Array(self.conversationsDictionary.values)
             self.tableView.reloadData()
         }
     }
@@ -75,10 +81,11 @@ class ConversationsController: UIViewController {
     func authUser() {
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
-            print("DEBUG: User is not logged in. Prensent login screen here..")
-        } else {
-            print("DEBUG: User id is \(String(describing: Auth.auth().currentUser?.uid))")
+//            print("DEBUG: User is not logged in. Prensent login screen here..")
         }
+//        else {
+//            print("DEBUG: User id is \(String(describing: Auth.auth().currentUser?.uid))")
+//        }
     }
     
     func signOut() {
@@ -96,6 +103,7 @@ class ConversationsController: UIViewController {
     func presentLoginScreen() {
         DispatchQueue.main.async {
             let controller = LoginController()
+            controller.delegate = self
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
@@ -123,7 +131,7 @@ class ConversationsController: UIViewController {
     func configureTableView() {
         tableView.backgroundColor = .systemPink
         tableView.rowHeight = 80
-        tableView.register(ConversationCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ConversationCell.self, forCellReuseIdentifier: ConversationCell.id)
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
@@ -146,7 +154,7 @@ extension ConversationsController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ConversationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConversationCell.id, for: indexPath) as! ConversationCell
 //        cell.textLabel?.text = "Test"
 //        cell.textLabel?.text = conversations[indexPath.row].message.text
         cell.conversation = conversations[indexPath.row]
@@ -169,9 +177,27 @@ extension ConversationsController: UITableViewDelegate {
 //關閉視窗，接收user參數，前往聊天室。
 extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, startChatWith user: User) {
-        controller.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         showChatControlloer(forUser: user)
 //        print("DEBUG: User in convesation controller is \(user.username)")
 
+    }
+}
+
+// MARK: - ProfileControllerDelegate
+
+extension ConversationsController: ProfileControllerDelegate {
+    func handleSignout() {
+        signOut()
+    }
+}
+
+// MARK: - AuthDelegate
+
+extension ConversationsController: AuthDelegate {
+    func authComplete() {
+        dismiss(animated: true, completion: nil)
+        configureUI()
+        fetchConversations()
     }
 }

@@ -24,18 +24,20 @@ class Authservice {
     func Userlogin(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("DEBUG: Failed to log in with error : \(error.localizedDescription)")
-                return
-            }
-            
-            print("DEBUG: User login successful")
-            //登入後關閉
-            //self.dismiss(animated: true, completion: nil)
-            
-        }
-        print("DEBUG: Handle login here..")
+//        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+//            if let error = error {
+//                print("DEBUG: Failed to log in with error : \(error.localizedDescription)")
+//                completion!(error)
+//                return
+//            }
+//
+//            print("DEBUG: User login successful")
+//
+//            //登入後關閉
+//            //self.dismiss(animated: true, completion: nil)
+//
+//        }
+//        print("DEBUG: Handle login here..")
     }
     
     func creatUser(credentials: RegisterCredentials, completion: ((Error?) -> Void)?) {
@@ -47,6 +49,7 @@ class Authservice {
         ref.putData(imageData, metadata: nil) { meta, error in
             if let error = error {
                 print("DEBUG: Failed to upload image with error : \(error.localizedDescription)")
+                completion!(error)
                 return
             }
             
@@ -57,6 +60,7 @@ class Authservice {
                 Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { result, error in
                     if let error = error {
                         print("DEBUG: Failed to creat user with error : \(error.localizedDescription)")
+                        completion!(error)
                         return
                     }
                     

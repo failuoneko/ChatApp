@@ -15,13 +15,17 @@ class ProfileHeader: UIView {
     
     // MARK: - Properties
     
+    var user: User? {
+        didSet { configureUserData() }
+    }
+    
     weak var delegate: ProfileHeaderDelegate?
     
     let gradient = CAGradientLayer()
     
     private let dismissButtom: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
         button.addTarget(self, action: #selector(dismissal), for: .touchUpInside)
         button.tintColor = .white
         button.imageView?.snp.makeConstraints({ make in
@@ -32,6 +36,7 @@ class ProfileHeader: UIView {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 4.0
@@ -44,7 +49,7 @@ class ProfileHeader: UIView {
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
-        label.text = "Eddie Brock"
+        label.text = "Username"
         return label
     }()
     
@@ -53,7 +58,7 @@ class ProfileHeader: UIView {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
-        label.text = "@venom"
+        label.text = "@mail"
         return label
     }()
     
@@ -87,6 +92,15 @@ class ProfileHeader: UIView {
     
     
     // MARK: - Helpers
+    
+    func configureUserData() {
+        guard let user = user else { return }
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = "@" + user.username
+        
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.kf.setImage(with: url)
+    }
     
     func configureUI() {
 

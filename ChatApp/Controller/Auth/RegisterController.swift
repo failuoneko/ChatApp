@@ -18,6 +18,8 @@ class RegisterController: UIViewController {
     
     private var profileImage: UIImage?
     
+    weak var delegate: AuthDelegate?
+    
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         //        let largeConfig = UIImage.SymbolConfiguration(pointSize: 140, weight: .bold, scale: .large)
@@ -116,6 +118,7 @@ class RegisterController: UIViewController {
     }
     
     // MARK: - Selectors
+    
     @objc func register() {
         guard let profileImage = profileImage else { return }
         guard let email = emailTextField.text else { return }
@@ -128,20 +131,22 @@ class RegisterController: UIViewController {
                                               password: password,
                                               fullname: fullname,
                                               username: username)
+        
         showLoader(true, withText: "Signing You Up")
         
         //傳入參數credentials
         Authservice.shared.creatUser(credentials: credentials) { error in
             if let error = error {
-                print("DEBUG: \(error.localizedDescription)")
                 self.showLoader(false)
+                self.showError(error.localizedDescription)
                 return
             }
             self.showLoader(false)
+            self.delegate?.authComplete()
+            
             // 註冊完關閉，並顯示用戶介面。
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
         }
-        
     }
     
     @objc func selectPhoto() {

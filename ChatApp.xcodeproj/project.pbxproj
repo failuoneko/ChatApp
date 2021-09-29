@@ -44,6 +44,10 @@
 		64B9127726D61E6D004BD793 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 64B9127626D61E6D004BD793 /* SDWebImage */; };
 		64B9127A26D61FFD004BD793 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 64B9127926D61FFD004BD793 /* Kingfisher */; };
 		64B9127C26D63B27004BD793 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B9127B26D63B27004BD793 /* ChatController.swift */; };
+		64CD81812702FB1F00E49D62 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD81802702FB1F00E49D62 /* ProfileViewModel.swift */; };
+		64CD81832702FFB400E49D62 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CD81822702FFB400E49D62 /* ProfileCell.swift */; };
+		64DA89972703402D00CD9FCC /* ProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA89962703402D00CD9FCC /* ProfileFooter.swift */; };
+		64DA899927044C5700CD9FCC /* showError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DA899827044C5700CD9FCC /* showError.swift */; };
 		64EF6EBA26D021CB003ED51E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64EF6EB926D021CB003ED51E /* GoogleService-Info.plist */; };
 		9632A6936CF9E4C0E7350568 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26EFEC79F65433548B9E7726 /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +90,10 @@
 		64AD21A92700E81600F23104 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		64AD21AB2700E9AC00F23104 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		64B9127B26D63B27004BD793 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		64CD81802702FB1F00E49D62 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		64CD81822702FFB400E49D62 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		64DA89962703402D00CD9FCC /* ProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFooter.swift; sourceTree = "<group>"; };
+		64DA899827044C5700CD9FCC /* showError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showError.swift; sourceTree = "<group>"; };
 		64EF6EB926D021CB003ED51E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F9BE361EF575EA6DC159ADF /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +138,7 @@
 				646E620F26D371F90049B352 /* UserCell.swift */,
 				646DA25826FB101E00E40847 /* MessageCell.swift */,
 				64AD21A52700B27700F23104 /* ConversationCell.swift */,
+				64CD81822702FFB400E49D62 /* ProfileCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				640D5EED26CE434B0026E604 /* Auth */,
 				646DA25C26FB41A800E40847 /* MessageViewModel.swift */,
 				64AD21A72700DFB400F23104 /* ConversationViewModel.swift */,
+				64CD81802702FB1F00E49D62 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +223,7 @@
 				64AA2B6626CD73EA00C3605A /* CustomTextField.swift */,
 				649CD89B26F6353400F7FAB3 /* CustomInputAccessoryView.swift */,
 				64AD21AB2700E9AC00F23104 /* ProfileHeader.swift */,
+				64DA89962703402D00CD9FCC /* ProfileFooter.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +254,7 @@
 				640D5EE726CDFD9D0026E604 /* Colors.swift */,
 				640D5EE926CE06AA0026E604 /* ConfigureGardientLayer.swift */,
 				6405A6C526D29C9300A76185 /* showLoader.swift */,
+				64DA899827044C5700CD9FCC /* showError.swift */,
 			);
 			name = Extension;
 			path = "New Group/New Group/utils/Extension";
@@ -404,12 +416,15 @@
 				64AA2B6526CD62FC00C3605A /* inputContainerView.swift in Sources */,
 				640D5EEA26CE06AA0026E604 /* ConfigureGardientLayer.swift in Sources */,
 				646E621026D371F90049B352 /* UserCell.swift in Sources */,
+				64CD81812702FB1F00E49D62 /* ProfileViewModel.swift in Sources */,
+				64DA899927044C5700CD9FCC /* showError.swift in Sources */,
 				646E621426D382390049B352 /* Service.swift in Sources */,
 				646E621226D381450049B352 /* User.swift in Sources */,
 				646DA25D26FB41A800E40847 /* MessageViewModel.swift in Sources */,
 				64AA2B6726CD73EA00C3605A /* CustomTextField.swift in Sources */,
 				64AA2B3B26CCDBF200C3605A /* AppDelegate.swift in Sources */,
 				640D5EEC26CE20CC0026E604 /* LoginViewModel.swift in Sources */,
+				64DA89972703402D00CD9FCC /* ProfileFooter.swift in Sources */,
 				64AD21A62700B27700F23104 /* ConversationCell.swift in Sources */,
 				640D5EEF26CE437D0026E604 /* RegisterViewModel.swift in Sources */,
 				64AA2B5E26CCFB4100C3605A /* RegisterController.swift in Sources */,
@@ -420,6 +435,7 @@
 				646E620B26D365F70049B352 /* NewMessageController.swift in Sources */,
 				64AA2B3D26CCDBF200C3605A /* SceneDelegate.swift in Sources */,
 				646DA25B26FB30D500E40847 /* Message.swift in Sources */,
+				64CD81832702FFB400E49D62 /* ProfileCell.swift in Sources */,
 				64AA2B5626CCDDB100C3605A /* ConversationsController .swift in Sources */,
 				64AA2B5926CCF86600C3605A /* ReuseCell.swift in Sources */,
 			);

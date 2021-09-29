@@ -13,11 +13,16 @@ protocol AuthControllerProtocol {
     func checkFromStatus()
 }
 
+protocol AuthDelegate: AnyObject {
+    func authComplete()
+}
+
 class LoginController: UIViewController {
     
     // MARK: - Properties
-    
     private var loginViewModel = LoginViewModel()
+    
+    weak var delegate: AuthDelegate?
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView()
@@ -94,28 +99,26 @@ class LoginController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-//        let hud = JGProgressHUD(style: .dark)
-//        hud.textLabel.text = "Logging in"
-//        hud.show(in: view)
         showLoader(true, withText: "Logging in")
         
         Authservice.shared.Userlogin(withEmail: email, password: password) { result, error in
             if let error = error {
-                print("DEBUG: Failed to login with error \(error.localizedDescription)")
                 self.showLoader(false)
+                self.showError(error.localizedDescription)
                 return
             }
             self.showLoader(false)
+            self.delegate?.authComplete()
+            
             // 關閉，並顯示用戶介面。
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
         }
-        
-
         print("login")
     }
     
     @objc func showSignUp() {
         let controller = RegisterController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
