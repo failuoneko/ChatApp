@@ -9,12 +9,12 @@ import UIKit
 
 extension UIViewController {
     
-    func configureGardientLayer() {
-        let gardient = CAGradientLayer()
-        gardient.colors = [UIColor.systemPurple.cgColor, UIColor.systemRed.cgColor]
-        gardient.locations = [0, 1]
-        view.layer.addSublayer(gardient)
-        gardient.frame = view.frame
+    func configureGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemRed.cgColor]
+        gradient.locations = [0, 1]
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
     }
     
 }
