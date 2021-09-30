@@ -57,6 +57,7 @@ class ProfileController: UITableViewController {
     // MARK: - Helpers
 
     func configureUI() {
+        navigationController?.navigationBar.barStyle = .black
         tableView.backgroundColor = .white
         
         tableView.tableHeaderView = headerView
